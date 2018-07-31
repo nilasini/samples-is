@@ -10,8 +10,8 @@
 <%@ page import="org.wso2.sample.identity.oauth2.SampleContextEventListener" %>
 <%
     String code = null;
-    String idToken;
-    String sessionState;
+    String idToken = null;
+    String sessionState = null;
     String error;
     String name = null;
     Properties properties;
@@ -121,14 +121,14 @@
                 <li class="dropdown user-name">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img class="img-circle" height="30" width=30" src="img/Admin-icon.jpg"> <span
-                            class="user-name"><%=name%>@pickup.com<i class="fa fa-chevron-down"></i></span>
+                            class="user-name"><%=name%><i class="fa fa-chevron-down"></i></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a
-                                <%--href='<%=properties.getProperty("OIDC_LOGOUT_ENDPOINT")%>"?post_logout_redirect_uri--%>
-                                <%--="<%=properties.getProperty("post_logout_redirect_uri")%>"&id_token_hint="<%=idToken%>'>--%>
-                                href='<%=properties.getProperty("OIDC_LOGOUT_ENDPOINT")%>'>Logout</a>
-                        </li>                    </ul>
+                                href='<%=properties.getProperty("OIDC_LOGOUT_ENDPOINT")%>?post_logout_redirect_uri=<%=properties.getProperty("post_logout_redirect_uri")%>&id_token_hint=<%=idToken%>&session_state=<%=sessionState%>'>
+                            Logout</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>

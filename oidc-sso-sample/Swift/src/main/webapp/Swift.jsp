@@ -10,8 +10,8 @@
 <%@ page import="com.nimbusds.jwt.SignedJWT" %>
 <%
     String code = null;
-    String idToken;
-    String sessionState;
+    String idToken = null;
+    String sessionState = null;
     String error;
     String name = null;
     Properties properties;
@@ -128,7 +128,8 @@
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a
-                                href='<%=properties.getProperty("OIDC_LOGOUT_ENDPOINT")%>'>Logout</a>
+                                href='<%=properties.getProperty("OIDC_LOGOUT_ENDPOINT")%>?post_logout_redirect_uri=<%=properties.getProperty("post_logout_redirect_uri")%>&id_token_hint=<%=idToken%>&session_state=<%=sessionState%>'>
+                            Logout</a>
                         </li>
                     </ul>
                 </li>
@@ -467,7 +468,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <a href="http://wso2.com/" target="_blank"><img src="img/wso2logo.svg" height="20"/></a>
-                <p>Copyright &copy; <a href="http://wso2.com/" target="_blank">WSO2</a> 2017</p>
+                <p>Copyright &copy; <a href="http://wso2.com/" target="_blank">WSO2</a> 2018</p>
             </div>
         </div>
     </div>
